@@ -1,7 +1,7 @@
 #include "main.h"
 /**
-* get_input - geys input from input stream and returns command
-* Return: input string
+ * get_input - gets input from input stream and returns command
+ * Return: input string
 */
 char *get_input()
 {
@@ -12,7 +12,11 @@ char *get_input()
 	char_read = getline(&buff, &buff_size, stdin);
 	if (char_read == -1)
 	{
-		return (NULL);
+		if (feof(stdin))
+		{
+			free(buff);
+			exit(EXIT_SUCCESS);
+		}
 	}
 	while(buff[i])
 	{
@@ -24,4 +28,3 @@ char *get_input()
 	}
 	return (buff);
 }
-

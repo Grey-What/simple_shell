@@ -1,7 +1,8 @@
+
 #include "main.h"
 /**
 * prompt - displays prompt in interactive mode.
-* Return: void 
+* Return: void
 */
 void prompt()
 {
@@ -11,4 +12,3 @@ void prompt()
 	}
 	return;
 }
-

@@ -14,8 +14,15 @@ extern char **environ;
 
 void prompt();
 char *get_input();
+int execute(char *input, char **av, size_t line_nr);
+
 int _strlen(const char *string);
+char *_strcpy(char *dest, const char *src);
+char *_strdup(const char *src);
+char *_itoa(size_t num);
+char *_strcat(char *dest, char *src);
 
 int _print(char *string);
+void error(char **av, char **list, size_t line_nr);
 
-#endif 
+#endif

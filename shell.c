@@ -8,15 +8,15 @@
 int main(int ac, char **av)
 {
 	char *input;
+	size_t line_nr = 0;
 
 	(void)ac;
-	(void)av;
 
-	
 	do {
+		line_nr++;
 		prompt();
 		input = get_input();
-		_print(input);
+		execute(input, av, line_nr);
 		free(input);
 	} while (1);
 	return (0);

@@ -75,14 +75,29 @@ char **construct_list(char *input, char *delim)
 int execute(char *input, char **av, size_t line_nr)
 {
 	pid_t pid;
-	char **list = NULL;
+	char **list = NULL, *pathname;
 	(void)av;
 
-	list = construct_list(input);
+	list = construct_list(input, " ");
 	if (list == NULL)
 	{
 		perror("testing the problem!!!!!");
 		return (-1);
+	}
+	if (list[0][0] != '/')
+	{
+		pathname = getpath(list[0]);
+		if (pathname != NULL)
+		{
+			free(list[0]);
+			list[0] = pathname;
+			printf("%s\n", list[0]);
+		}
+		else
+		{
+			free_list(list);
+			return (-1);
+		}
 	}
 
 	pid = fork();

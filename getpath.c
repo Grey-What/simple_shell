@@ -6,15 +6,20 @@
 */
 char **getdires(char *name)
 {
-	int i =0, len = 0;
+	int i = 0, len = 0;
 	char **env = environ, *path, **pathdires, **directories;
-	
+
 	len = _strlen(name);
 	while (*env)
 	{
-		if (_strcmp(env[i], name , len) == 0 && env[i][len] == '=')
+		if (_strncmp(env[i], name , len) == 0 && env[i][len] == '=')
 		{
 			path = _strdup(env[i]);
+			if (!path)
+			{
+				perror("path");
+				return (NULL);
+			}
 		}
 		i++;
 	}
@@ -38,15 +43,23 @@ char **getdires(char *name)
 */
 char *getpath(char *name)
 {
-	char **directories = NULL, char *pathname = NULL;
-	struct stat *temp = malloc(sizeof(struct stat ));
+	int i = 0;
+	char **directories = NULL, *pathname = NULL;
+
+	struct stat *temp = malloc(sizeof(struct stat));
+	if (!temp)
+	{
+		perror("temp");
+		return (NULL);
+	}
 
 	directories = getdires(name);
 	while (directories[i] != NULL)
 	{
-		pathname = malloc(sizeof(char) * (_strlen(directories[i] + _strlen(name) + 2);
-		if (pathame == NULL)
+		pathname = malloc(sizeof(char) * (_strlen(directories[i]) + _strlen(name) + 2));
+		if (pathname == NULL)
 			return (NULL);
+
 		_strcpy(pathname, directories[i]);
 		_strcat(pathname, "/");
 		_strcat(pathname, name);
@@ -57,7 +70,7 @@ char *getpath(char *name)
 			return (pathname);
 		}
 		free(pathname);
-		pathname = NULL;i
+		pathname = NULL;
 		i++;
 	}
 	free_list(directories);

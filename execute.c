@@ -18,13 +18,12 @@ void free_list(char **list)
 	free(list);
 }
 /**
- * construct_list - creates a list of command + arguments
- *
- * @input: input string receive from stdin
- *
+ * construct_list - creates a list of tokens
+ * @input: input string
+ * @delim: delim to split input
  * Return: list of command + arguments
  */
-char **construct_list(char *input)
+char **construct_list(char *input, char *delim)
 {
 	char **list = NULL;
 	char *token = NULL, *temp;
@@ -34,22 +33,20 @@ char **construct_list(char *input)
 	if (!temp)
 		return (NULL);
 
-	token = strtok(temp, " ");
+	token = strtok(temp, delim);
 
 	while (token != NULL)
 	{
 		count++;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, delim);
 	}
 	free(temp);
 
 	list = malloc(sizeof(char *) * (count + 1));
 	if (!list)
-	{
 		return (NULL);
-	}
 
-	token = strtok(input, " ");
+	token = strtok(input, delim);
 
 	while (token != NULL)
 	{
@@ -60,7 +57,7 @@ char **construct_list(char *input)
 			return (NULL);
 		}
 		_strcpy(list[i], token);
-		token = strtok(NULL, " ");
+		token = strtok(NULL, delim);
 		i++;
 	}
 	list[i] = NULL;
@@ -81,18 +78,13 @@ int execute(char *input, char **av, size_t line_nr)
 	char **list = NULL;
 	(void)av;
 
-	if (!input)
-	{
-		/*free command*/
-		return (-1);
-	}
-
 	list = construct_list(input);
 	if (list == NULL)
 	{
 		perror("testing the problem!!!!!");
 		return (-1);
 	}
+
 	pid = fork();
 
 	if (pid == -1)

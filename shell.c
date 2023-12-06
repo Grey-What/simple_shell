@@ -16,6 +16,11 @@ int main(int ac, char **av)
 		line_nr++;
 		prompt();
 		input = get_input();
+		if (input == NULL)
+		{
+			perror(av[0]);
+			continue;
+		}
 		execute(input, av, line_nr);
 		free(input);
 	} while (1);

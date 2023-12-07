@@ -70,7 +70,7 @@ char **construct_list(char *input, char *delim)
  * @path: full pathname of command to execute
  * @command: command with arguments stored in list
  *
- * Return: -1 on fail, else 0
+ * Return: 0
  */
 int execute(char *input, char **av, size_t line_nr)
 {
@@ -81,9 +81,10 @@ int execute(char *input, char **av, size_t line_nr)
 	list = construct_list(input, " ");
 	if (list == NULL)
 	{
-		perror("testing the problem!!!!!");
-		return (-1);
+		perror("malloc at list");
+		exit(EXIT_FAILURE);
 	}
+
 	if (list[0][0] != '/')
 	{
 		pathname = getpath(list[0]);
@@ -91,12 +92,12 @@ int execute(char *input, char **av, size_t line_nr)
 		{
 			free(list[0]);
 			list[0] = pathname;
-			printf("%s\n", list[0]);
 		}
 		else
 		{
+			error(av, list, line_nr);
 			free_list(list);
-			return (-1);
+			return (0);
 		}
 	}
 
@@ -105,13 +106,12 @@ int execute(char *input, char **av, size_t line_nr)
 	if (pid == -1)
 	{
 		free_list(list);
-		return (-1);/* add exit*/
+		perror("fork");
 	}
 	else if (pid == 0)
 	{
 		execve(list[0], list, environ);
 		error(av, list, line_nr);
-		return(-1);
 		_exit(EXIT_FAILURE);
 	}
 	else

@@ -125,29 +125,3 @@ char *_itoa(size_t num)
 	}
 	return (str);
 }
-/**
- * _strncmp - compares n number of chars in two strings
- *
- * @s1: first string
- * @s2: second string
- * @n: number of characters to compare
- *
- * Return: 0 if chars compared are equal, else differnece in chars not matching
- */
-int _strncmp(const char *s1, const char *s2, size_t n)
-{
-	if (!s1 || !s2)
-		return (-1);
-
-	while (n > 0)
-	{
-		if (*s1 != *s2)
-			return (*(unsigned char *) s1 - *(unsigned char *) s2);
-		if (*s1 == '\0')
-			return (0);
-		s1++;
-		s2++;
-		n--;
-	}
-	return (0);
-}

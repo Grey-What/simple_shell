@@ -1,5 +1,24 @@
 #include "main.h"
 /**
+* builtin_env - environ
+* 
+* @list: array of strings
+*
+* Return: 1 on success, -1 on failure
+*/
+int builtin_env(char **list)
+{
+	int i = 0;
+	(void)list;
+
+	while (environ[i])
+	{
+		_print(environ[i]);
+		i++;
+	}
+	return (1);
+}
+/**
  * builtin_exit - exit the shell with exit code if specified
  *
  * @list: array of strings, containing command + arguments
@@ -29,7 +48,7 @@ int builtin_exit(char **list)
 
 	return (1);
 }
-Builtins builtin[] = { {"exit", builtin_exit}, {NULL, NULL} };
+Builtins builtin[] = { {"exit", builtin_exit}, {"env", builtin_env}, {NULL, NULL} };
 /**
  * check_builtin - function check if command entered is a builtin
  *

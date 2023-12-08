@@ -3,6 +3,7 @@
  * error - displays error message
  *
  * @av: list of arguments given to program
+ * @list: array of strings containing command and arguements
  * @line_nr: the line_nr of command given
  *
  * Return: void

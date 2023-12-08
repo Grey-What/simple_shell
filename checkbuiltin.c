@@ -1,7 +1,7 @@
 #include "main.h"
 /**
 * builtin_env - environ
-* 
+*
 * @list: array of strings
 *
 * Return: 1 on success, -1 on failure
@@ -48,7 +48,6 @@ int builtin_exit(char **list)
 
 	return (1);
 }
-Builtins builtin[] = { {"exit", builtin_exit}, {"env", builtin_env}, {NULL, NULL} };
 /**
  * check_builtin - function check if command entered is a builtin
  *
@@ -60,6 +59,8 @@ void check_builtin(char **list)
 {
 	int i; /*count = 0*/
 	int check = 0;
+	Builtins builtin[] = {
+			{"exit", builtin_exit}, {"env", builtin_env}, {NULL, NULL} };
 	(void)check;
 
 	for (i = 0; builtin[i].command != NULL; i++)

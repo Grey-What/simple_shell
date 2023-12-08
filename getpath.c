@@ -63,7 +63,8 @@ char *getpath(char *name)
 	}
 	while (directories[i] != NULL)
 	{
-		pathname = malloc(sizeof(char) * (_strlen(directories[i]) + _strlen(name) + 2));
+		pathname = malloc(sizeof(char) * (_strlen(directories[i])
+			+ _strlen(name) + 2));
 		if (pathname == NULL)
 			return (NULL);
 

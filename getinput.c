@@ -18,21 +18,21 @@ char **get_input()
 			exit(EXIT_SUCCESS);
 		}
 	}
-	while(input[i])
+	while (input[i])
 	{
 		if (input[i] == '\n' && i != 0)
 		{
-		        input[i] = '\0';
+			input[i] = '\0';
 		}
 		i++;
 	}
 
 	list = construct_list(input, " ");
-        if (list == NULL)
-        {
-                perror("malloc at list");
-                exit(EXIT_FAILURE);
-        }
+	if (list == NULL)
+	{
+		perror("malloc at list");
+		exit(EXIT_FAILURE);
+	}
 	free(input);
 	check_builtin(list);
 	return (list);

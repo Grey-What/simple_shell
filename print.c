@@ -6,7 +6,7 @@
 */
 int _print(char *string)
 {
-	return(write(STDOUT_FILENO, string, _strlen(string)));
+	return (write(STDOUT_FILENO, string, _strlen(string)));
 }
 /**
  * _strcmp - this function compares two strings
@@ -39,11 +39,11 @@ int _strcmp(const char *s1, const char *s2)
  */
 int _atoi(const char *str)
 {
-    int result = 0;
-    int sign = 1;
+	int result = 0;
+	int sign = 1;
 
-    if ((*str == '-') || (*str == '+'))
-    {
+	if ((*str == '-') || (*str == '+'))
+	{
         if (*str == '-')
 	{
             sign = -1;

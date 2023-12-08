@@ -62,13 +62,14 @@ char **construct_list(char *input, char *delim)
 	}
 	list[i] = NULL;
 
-	return(list);
+	return (list);
 }
 /**
  * execute - function execute command given as input
  *
- * @path: full pathname of command to execute
- * @command: command with arguments stored in list
+ * @list: array of strings containing commands and arguements
+ * @av: array of strings containing command line arguements
+ * @line_nr: line number of command
  *
  * Return: 0
  */
@@ -93,7 +94,6 @@ int execute(char **list, char **av, size_t line_nr)
 			return (0);
 		}
 	}
-
 	pid = fork();
 
 	if (pid == -1)
@@ -110,6 +110,7 @@ int execute(char **list, char **av, size_t line_nr)
 	else
 	{
 		int status;
+
 		wait(&status);
 		free_list(list);
 	}

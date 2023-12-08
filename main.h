@@ -18,7 +18,7 @@ extern char **environ;
  * @command: potensial builtin;
  * @function: builtin function to execute if matched
  *
- * Description: The input value is split into array of pointers containing command and it's arguments. The command is then compared to command to see if it's a potensial builtin, if true the corresponding function will be executed
+ * Description: match input command to possible builtins
  */
 
 typedef struct Builtins
@@ -29,7 +29,7 @@ typedef struct Builtins
 
 extern Builtins builtin[3];
 
-void prompt();
+void prompt(void);
 char **get_input();
 int execute(char **input, char **av, size_t line_nr);
 char *getpath(char *name);

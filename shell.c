@@ -1,9 +1,11 @@
 #include "main.h"
 /**
 * main - entry point to shell
+*
 * @ac: number of arguements
 * @av: array of strings containing command line arguements.
-* Return : Always 0
+*
+* Return: Always 0
 */
 int main(int ac, char **av)
 {

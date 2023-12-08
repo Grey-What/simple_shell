@@ -8,14 +8,15 @@
  */
 int _strlen(const char *s)
 {
-        int i = 0;
-        if (!s)
-                return (0);
-        while (s[i] != '\0')
-        {
-                i++;
-        }
-        return (i);
+	int i = 0;
+
+	if (!s)
+		return (0);
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
 /**
  * _strdup - duplicates a string
@@ -26,13 +27,13 @@ int _strlen(const char *s)
  */
 char *_strdup(const char *src)
 {
-        char *dest = malloc(_strlen(src) + 1);
+	char *dest = malloc(_strlen(src) + 1);
 
-        if (dest == NULL)
-                return (NULL);
-        _strcpy(dest, src);
+	if (dest == NULL)
+		return (NULL);
+	_strcpy(dest, src);
 
-        return (dest);
+	return (dest);
 }
 /**
  * _strcpy - function copies a string
@@ -44,15 +45,15 @@ char *_strdup(const char *src)
  */
 char *_strcpy(char *dest, const char *src)
 {
-        int i = 0;
+	int i = 0;
 
-        while (src[i] != '\0')
-        {
-                dest[i] = src[i];
-                i++;
-        }
-        dest[i] = '\0';
-        return (dest);
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
 /**
  * _strcat - this function concatenates two strings
@@ -64,29 +65,29 @@ char *_strcpy(char *dest, const char *src)
  */
 char *_strcat(char *dest, char *src)
 {
-        int i = 0;
-        int j = 0;
-        int count = 0;
+	int i = 0;
+	int j = 0;
+	int count = 0;
 
-        while (dest[i] != '\0')
-        {
-                i++;
-        }
-        count = i;
-        while (src[j] != '\0')
-        {
-                dest[count + j] = src[j];
-                j++;
-        }
-        dest[count + j] = '\0';
-        return (dest);
+	while (dest[i] != '\0')
+	{
+		i++;
+	}
+	count = i;
+	while (src[j] != '\0')
+	{
+		dest[count + j] = src[j];
+		j++;
+	}
+	dest[count + j] = '\0';
+	return (dest);
 }
 /**
-* _itoa - converts number to string
-* @num: number
-* Return: character
-*/
-char* _itoa(size_t num)
+ * _itoa - converts number to string
+ * @num: number
+ * Return: character
+ */
+char *_itoa(size_t num)
 {
 	int i = 0, start = 0, end;
 	size_t remainder = 0;
@@ -100,7 +101,7 @@ char* _itoa(size_t num)
 	{
 		str[i++] = '0';
 		str[i] = '\0';
-		return str;
+		return (str);
 	}
 
 	while (num != 0)
@@ -108,7 +109,7 @@ char* _itoa(size_t num)
 		remainder = num % 10;
 		if (remainder)
 			str[i++] = remainder + '0';
-		num = num/10;
+		num = num / 10;
 	}
 
 	str[i] = '\0';

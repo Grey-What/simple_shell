@@ -72,18 +72,11 @@ char **construct_list(char *input, char *delim)
  *
  * Return: 0
  */
-int execute(char *input, char **av, size_t line_nr)
+int execute(char **list, char **av, size_t line_nr)
 {
 	pid_t pid;
-	char **list = NULL, *pathname;
+	char *pathname;
 	(void)av;
-
-	list = construct_list(input, " ");
-	if (list == NULL)
-	{
-		perror("malloc at list");
-		exit(EXIT_FAILURE);
-	}
 
 	if (list[0][0] != '/')
 	{

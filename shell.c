@@ -7,7 +7,7 @@
 */
 int main(int ac, char **av)
 {
-	char *input;
+	char **input;
 	size_t line_nr = 0;
 
 	(void)ac;
@@ -22,7 +22,7 @@ int main(int ac, char **av)
 			continue;
 		}
 		execute(input, av, line_nr);
-		free(input);
+		/*free(input);*/
 	} while (1);
 	return (0);
 }

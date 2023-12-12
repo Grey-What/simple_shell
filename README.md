@@ -1,8 +1,10 @@
+# Simple Shell
+
 A simple shell is a program that provides an interface for the user to interact with the operating system. It allows the user to enter commands, which are then executed by the shell or passed to the kernel. A simple shell can also run scripts, which are files that contain a sequence of commands.
 
 The purpose of a simple shell is to make it easier for the user to perform tasks on the system, without having to know the low-level details of how the system works. A simple shell can also automate repetitive or complex operations, by using variables, loops, conditional statements, and functions.
 
-Some of the uses of a simple shell are:
+### Some of the uses of a simple shell are:
 
 - Managing files and directories
 - Running programs and processes
@@ -11,7 +13,7 @@ Some of the uses of a simple shell are:
 - Accessing network resources
 - Debugging and testing
 
-A simple shell works by following these steps:
+### A simple shell works by following these steps:
 
 - It prints a prompt, which indicates that it is ready to accept input from the user.
 - It reads the input from the user, either from the keyboard or from a file.
@@ -22,7 +24,7 @@ A simple shell works by following these steps:
 - If the tokens are syntax errors, the shell prints an error message, and returns to the prompt.
 - The shell waits for the child process to finish, and then returns the exit status of the command to the user.
 
-Some of the benefits of using a simple shell are:
+### Some of the benefits of using a simple shell are:
 
 - It is portable, meaning that it can run on different operating systems and platforms, as long as they have a compatible shell interpreter.
 - It is flexible, meaning that it can be customized and extended by the user, using aliases, functions, variables, and environment settings.

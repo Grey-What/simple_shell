@@ -89,8 +89,8 @@ char *_strcat(char *dest, char *src)
  */
 char *_itoa(size_t num)
 {
-	int i = 0, start = 0, end;
-	size_t remainder = 0;
+	int i = 0, input = 0, output;
+	size_t result = 0;
 	char temp, *str = NULL;
 
 	str = malloc(10);
@@ -106,22 +106,22 @@ char *_itoa(size_t num)
 
 	while (num != 0)
 	{
-		remainder = num % 10;
-		if (remainder)
-			str[i++] = remainder + '0';
+		result = num % 10;
+		if (result)
+			str[i++] = result + '0';
 		num = num / 10;
 	}
 
 	str[i] = '\0';
 
-	end = i - 1;
-	while (start < end)
+	output = i - 1;
+	while (input < output)
 	{
-		temp = str[start];
-		str[start] = str[end];
-		str[end] = temp;
-		start++;
-		end--;
+		temp = str[input];
+		str[input] = str[output];
+		str[output] = temp;
+		input++;
+		output--;
 	}
 	return (str);
 }

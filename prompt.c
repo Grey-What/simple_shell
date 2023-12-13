@@ -1,4 +1,3 @@
-
 #include "main.h"
 /**
 * prompt - displays prompt in interactive mode.

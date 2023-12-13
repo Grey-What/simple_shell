@@ -26,8 +26,7 @@ char **getdires(char *name)
 	pathdires = construct_list(path, "=");
 	if (pathdires == NULL)
 	{
-		/* error check */
-		printf("no pathdires");
+		perror("pathdires");
 		free(path);
 		exit(EXIT_FAILURE);
 	}
@@ -36,20 +35,20 @@ char **getdires(char *name)
 	directories = construct_list(pathdires[1], ":");
 	if (directories == NULL)
 	{
-		/* error check */
-		printf("no directories");
+		perror("directories");
 		exit(EXIT_FAILURE);
 	}
 	free_list(pathdires);
 	return (directories);
 }
-
 /**
 * getpath - gets an environment variable
-* @name: name of the environmental variable
+*
+* @list: array of pointer to command + arguments
+*
 * Return: full environment varaible definition
 */
-char *getpath(char *name)
+char *getpath(char **list)
 {
 	int i = 0;
 	char **directories = NULL, *pathname = NULL;
@@ -64,13 +63,13 @@ char *getpath(char *name)
 	while (directories[i] != NULL)
 	{
 		pathname = malloc(sizeof(char) * (_strlen(directories[i])
-			+ _strlen(name) + 2));
+			+ _strlen(list[0]) + 2));
 		if (pathname == NULL)
 			return (NULL);
 
 		_strcpy(pathname, directories[i]);
 		_strcat(pathname, "/");
-		_strcat(pathname, name);
+		_strcat(pathname, list[0]);
 		if (stat(pathname, &temp) == 0)
 		{
 			free_list(directories);

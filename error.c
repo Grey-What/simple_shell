@@ -10,21 +10,5 @@
  */
 void error(char **av, char **list, size_t line_nr)
 {
-	char error_msg[100];
-	char *number_string = NULL;
-
-	number_string = _itoa(line_nr);
-
-	_strcpy(error_msg, av[0]);
-	_strcat(error_msg, ": ");
-
-	if (isatty(STDIN_FILENO) == 0)
-	{
-		_strcat(error_msg, number_string);
-		_strcat(error_msg, ": ");
-	}
-	_print(error_msg);
-
-	perror(list[0]);
-	free(number_string);
+	fprintf(stderr, "%s: %lu: %s: not found\n", av[0], line_nr, list[0]);
 }

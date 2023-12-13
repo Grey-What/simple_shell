@@ -81,7 +81,7 @@ int execute(char **list, char **av, size_t line_nr)
 
 	if (list[0][0] != '/')
 	{
-		pathname = getpath(list[0]);
+		pathname = getpath(list);
 		if (pathname != NULL)
 		{
 			free(list[0]);

@@ -32,7 +32,7 @@ extern Builtins builtin[3];
 void prompt(void);
 char **get_input();
 int execute(char **input, char **av, size_t line_nr);
-char *getpath(char *name);
+char *getpath(char **list);
 char **construct_list(char *input, char *delim);
 void check_builtin(char **list);
 

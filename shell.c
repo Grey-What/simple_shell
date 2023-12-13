@@ -15,7 +15,9 @@ int main(int ac, char **av)
 	(void)ac;
 
 	do {
-		line_nr++;
+		if (isatty(STDIN_FILENO) == 0)
+			line_nr++;
+
 		prompt();
 		input = get_input();
 		if (input == NULL)
